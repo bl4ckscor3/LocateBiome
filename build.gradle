@@ -12,14 +12,14 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = '1.15.2-v1.0'
+version = '1.14.4-v1.0'
 group = 'bl4ckscor3.mod.locatebiome'
 archivesBaseName = 'locatebiome'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20200223-1.15.1'
+    mappings channel: 'stable', version: '56-1.14.3'
 	
     runs {
         client {
@@ -47,7 +47,7 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.15.2-31.1.16'
+    minecraft 'net.minecraftforge:forge:1.14.4-28.2.2'
 }
 
 jar {

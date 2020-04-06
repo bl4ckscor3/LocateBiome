@@ -92,17 +92,16 @@ public class LocateBiome
 
 	private static BlockPos locateBiome(ServerWorld world, Biome biome, BlockPos pos, int maxSearchRadius, int searchIncrement)
 	{
-		return locateBiome(world, pos.getX(), pos.getY(), pos.getZ(), maxSearchRadius, searchIncrement, ImmutableList.of(biome));
+		return locateBiome(world, pos.getX(), pos.getZ(), maxSearchRadius, searchIncrement, ImmutableList.of(biome));
 	}
 
 	//code pulled from snapshot versions using fabric's toolchain and tried to make legible as best as possible
 	//there is a way to do this without copying code, however it is not performant for a high search radius
-	private static BlockPos locateBiome(ServerWorld world, int x, int y, int z, int maxSearchRadius, int searchIncrement, List<Biome> biomes)
+	private static BlockPos locateBiome(ServerWorld world, int x, int z, int maxSearchRadius, int searchIncrement, List<Biome> biomes)
 	{
 		int originX = x >> 2;
 		int originZ = z >> 2;
 		int border = maxSearchRadius >> 2;
-		int currentY = y >> 2;
 		BlockPos pos = null;
 
 		for(int idk = 0; idk <= border; idk += searchIncrement)
@@ -121,8 +120,11 @@ public class LocateBiome
 					int currentX = originX + xi;
 					int currentZ = originZ + zi;
 
-					if(biomes.contains(world.getNoiseBiomeRaw(currentX, currentY, currentZ)))
-						return new BlockPos(currentX << 2, y, currentZ << 2);
+					//find the biome at the current position
+					pos = world.getChunkProvider().getChunkGenerator().getBiomeProvider().findBiomePosition(currentX << 2, currentZ << 2, 1, biomes, world.rand);
+
+					if(pos != null)
+						return pos;
 				}
 			}
 		}
