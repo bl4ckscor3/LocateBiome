@@ -1,0 +1,25 @@
+modLoader="javafml" #mandatory
+loaderVersion="[31,)" #mandatory
+issueTrackerURL="https://github.com/bl4ckscor3/LocateBiome/issues"
+displayURL="http://minecraft.curseforge.com/projects/locatebiome"
+authors="bl4ckscor3"
+
+[[mods]] #mandatory
+modId="locatebiome" #mandatory
+version="v1.0" #mandatory
+displayName="LocateBiome" #mandatory
+description='''Adds the /locatebiome command from 1.16 snapshots into earlier versions!''' #mandatory
+
+[[dependencies.locatebiome]]
+    modId="forge"
+    mandatory=true
+    versionRange="[31,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.locatebiome]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.15,1.16)"
+    ordering="NONE"
+    side="BOTH"
