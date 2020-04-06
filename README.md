@@ -1,2 +1,2 @@
 # LocateBiome
-https://minecraft.curseforge.com/projects/locatebiome
+https://www.curseforge.com/minecraft/mc-mods/locatebiome
